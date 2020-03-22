@@ -1,0 +1,8 @@
+CREATE TABLE reader
+(
+    Id         SERIAL PRIMARY KEY,
+    FirstName  CHARACTER VARYING(30) NOT NULL,
+    LastName   CHARACTER VARYING(30) NOT NULL,
+    SecondName   CHARACTER VARYING(30) NOT NULL,
+    created_on TIMESTAMP             NOT NULL
+);
