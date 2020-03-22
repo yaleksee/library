@@ -1,10 +1,7 @@
 package com.example.library.service.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -16,6 +13,7 @@ import java.sql.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Issued implements Serializable {
 
     @Id

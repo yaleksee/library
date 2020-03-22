@@ -1,9 +1,6 @@
 package com.example.library.service.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -14,6 +11,7 @@ import java.sql.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 //@Inheritance(strategy = InheritanceType.JOINED)
 @EqualsAndHashCode
 public class Book {
@@ -26,9 +24,6 @@ public class Book {
     private String name;
 
     @Column(nullable = false)
-    private Boolean isNew;
-
-    @Column(nullable = false)
     private Boolean isHandle;
 
     @Column(nullable = false)
@@ -36,5 +31,5 @@ public class Book {
     private Date created;
 
     @Column(nullable = false)
-    private Integer count;
+    private String isbn;
 }

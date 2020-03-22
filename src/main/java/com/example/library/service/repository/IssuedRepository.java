@@ -1,16 +1,14 @@
 package com.example.library.service.repository;
 
 import com.example.library.service.model.Book;
+import com.example.library.service.model.Issued;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.List;
-import java.util.Optional;
 
 @Repository
-public interface BookRepository extends JpaRepository<Book, Long> {
-    @Nullable
-    List<Book> findBookByNameAndIsbn(@Nonnull String name, @Nonnull String isbn);
+public interface IssuedRepository extends JpaRepository<Issued, Long> {
+
 }

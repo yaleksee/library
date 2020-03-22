@@ -6,8 +6,10 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication(exclude = {HibernateJpaAutoConfiguration.class})
+@SpringBootApplication
+
 @EnableJpaRepositories
+@EnableJpaAuditing
 public class LibraryApplication {
 
     public static void main(String[] args) {

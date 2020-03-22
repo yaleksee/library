@@ -13,6 +13,7 @@ import java.sql.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class ReaderExpired implements Serializable {
 
     @Id

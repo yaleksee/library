@@ -28,6 +28,16 @@ public class ExpiredServiceImp implements ExpiredService {
         return expiredRepository.findAll();
     }
 
+    @Override
+    public ReaderExpired create(@NotNull ReaderExpired readerExpired) {
+        return expiredRepository.save(readerExpired);
+    }
+
+    @Override
+    public void delete(@NotNull ReaderExpired readerExpired) {
+        expiredRepository.delete(readerExpired);
+    }
+
     @NotNull
     public ReaderExpired save(@NotNull ReaderExpired readerExpired) {
         return expiredRepository.save(readerExpired);

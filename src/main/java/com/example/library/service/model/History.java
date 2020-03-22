@@ -13,6 +13,7 @@ import java.sql.Date;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class History implements Serializable {
 
     @Id
@@ -38,5 +39,11 @@ public class History implements Serializable {
     @Column(name = "time_return", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date timeReturn;
+
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "issued_id", nullable = false)
+    @JsonIgnore
+    @ToString.Exclude
+    private Issued issued;
 
 }

@@ -46,4 +46,9 @@ public class ReaderServiceImp implements ReaderService {
     public Reader findReaderByFirstNameAndLastName(@Nonnull String firstName, @Nonnull String lastName) {
         return readerRepository.findReaderByFirstNameAndLastName(firstName, lastName);
     }
+
+    @Override
+    public void delete(@NotNull Reader reader) {
+        readerRepository.delete(reader);
+    }
 }
