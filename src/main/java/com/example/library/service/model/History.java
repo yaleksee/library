@@ -15,15 +15,9 @@ import java.sql.Date;
 @NoArgsConstructor
 public class History implements Serializable {
 
-    @Column(name = "reader_id")
-    private Long getReaderId() {
-        return this.reader.getId();
-    }
-
-    @Column(name = "book_id")
-    private Long getBookId() {
-        return this.book.getId();
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "reader_id", nullable = false)
@@ -37,11 +31,11 @@ public class History implements Serializable {
     @ToString.Exclude
     private Book book;
 
-    @Column(name = "time_issue")
+    @Column(name = "time_issue", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date timeIssue;
 
-    @Column(name = "time_return")
+    @Column(name = "time_return", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date timeReturn;
 

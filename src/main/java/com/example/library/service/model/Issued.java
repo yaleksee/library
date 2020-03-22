@@ -1,7 +1,10 @@
 package com.example.library.service.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -9,11 +12,11 @@ import java.io.Serializable;
 import java.sql.Date;
 
 @Entity
-@Table(name = "reader_expired")
+@Table(name = "book_issued")
 @Getter
 @Setter
 @NoArgsConstructor
-public class ReaderExpired implements Serializable {
+public class Issued implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,10 +38,8 @@ public class ReaderExpired implements Serializable {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date timeIssue;
 
-    @Column(name = "time_return", nullable = false)
+    @Column(name = "time_mustReturn", nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date timeReturn;
+    private Date timeMustReturn;
 
-    @Column(name = "expired")
-    private Integer expired;
 }

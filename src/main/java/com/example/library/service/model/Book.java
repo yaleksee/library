@@ -16,7 +16,7 @@ import java.sql.Date;
 @NoArgsConstructor
 //@Inheritance(strategy = InheritanceType.JOINED)
 @EqualsAndHashCode
-public class Book{
+public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +27,9 @@ public class Book{
 
     @Column(nullable = false)
     private Boolean isNew;
+
+    @Column(nullable = false)
+    private Boolean isHandle;
 
     @Column(nullable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
