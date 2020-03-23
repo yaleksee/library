@@ -82,7 +82,7 @@ public class Librarian {
     @Transactional
     public History takeBookBack(@NotNull Long issuedId) {
         final Issued issued = issuedService.searchOne(issuedId);
-        final History history = historyService.findByIssued(issued);
+        final History history = historyService.findByIssuedId(issued.getId());
         // выясняем опазадал ли наш читатель со сроком
         // если да то заносим его в список должников
         // в любом случае удаляем из таблицы книги на руках и вносим информацию в запись история
