@@ -3,6 +3,8 @@ package com.example.library.service.impl;
 
 import com.example.library.service.ExpiredService;
 import com.example.library.service.HistoryService;
+import com.example.library.service.IssuedService;
+import com.example.library.service.model.Book;
 import com.example.library.service.model.History;
 import com.example.library.service.model.Issued;
 import com.example.library.service.model.ReaderExpired;
@@ -21,6 +23,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class HistoryServiceImp implements HistoryService {
     private final HistoryRepository historyRepository;
+    private final IssuedService issuedService;
 
     @Nonnull
     public History searchOne(@Nonnull Long id) {
@@ -37,19 +40,22 @@ public class HistoryServiceImp implements HistoryService {
         return historyRepository.save(history);
     }
 
-    @Override
-    public History update(@NotNull History history) {
-        return historyRepository.save(history);
+    @NotNull
+    public History update(@NotNull Long historyId, @NotNull History history) {
+        final History currentHistory = historyRepository.getOne(historyId);
+        currentHistory.setTimeReturn(history.getTimeReturn());
+        return historyRepository.save(currentHistory);
     }
 
     @Override
-    public void delete(@NotNull History history) {
-        historyRepository.delete(history);
+    public void delete(@NotNull Long id) {
+        historyRepository.deleteById(id);
     }
 
     @Override
-    public History findByIssued(@NotNull Issued issued) {
-        return historyRepository.findByIssued(issued);
+    public History findByIssuedId(@NotNull Long issuedId) {
+        final Issued issued = issuedService.searchOne(issuedId);
+        return historyRepository.findByIssued_Id(issued.getId());
     }
 
     @Nonnull

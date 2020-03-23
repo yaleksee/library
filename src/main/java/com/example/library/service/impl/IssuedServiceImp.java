@@ -37,8 +37,8 @@ public class IssuedServiceImp implements IssuedService {
     }
 
     @Override
-    public void delete(@NotNull Issued issued) {
-        issuedRepository.delete(issued);
+    public void delete(@NotNull Long id) {
+        issuedRepository.deleteById(id);
     }
 
     @Nonnull

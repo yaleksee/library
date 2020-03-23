@@ -19,6 +19,7 @@ import java.util.List;
 public class BookServiceImp implements BookService {
     private final BookRepository bookRepository;
 
+    @Override
     @Nonnull
     public Book searchOne(@Nonnull Long id) {
         return bookRepository.getOne(id);
@@ -35,8 +36,12 @@ public class BookServiceImp implements BookService {
     }
 
     @NotNull
-    public Book update(@NotNull Book book) {
-        return bookRepository.save(book);
+    public Book update(@NotNull Long bookId, @NotNull Book book) {
+        final Book currentBook = bookRepository.getOne(bookId);
+        currentBook.setName(book.getName());
+        currentBook.setIsHandle(book.getIsHandle());
+        currentBook.setIsbn(book.getIsbn());
+        return bookRepository.save(currentBook);
     }
 
     @Override
@@ -45,7 +50,7 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public void delete(@NotNull Book book) {
-        bookRepository.delete(book);
+    public void delete(@NotNull Long id) {
+        bookRepository.deleteById(id);
     }
 }

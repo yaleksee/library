@@ -18,9 +18,9 @@ public interface BookService {
 
     Book create(@NotNull Book book);
 
-    Book update(@NotNull Book book);
+    Book update(@NotNull Long bookId, @NotNull Book book);
 
     @NotNull Collection<Book> findBookByNameAndIsbn(@Nonnull String name, @Nonnull String isbm);
 
-    void delete(@NotNull Book book);
+    void delete(@NotNull Long bookId);
 }

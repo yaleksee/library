@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Collection;
 
 public interface ReaderRepository extends JpaRepository<Reader, Long> {
     @Nullable
-    Reader findReaderByFirstNameAndLastName(@Nonnull String firstName, @Nonnull String lastName);
+    Collection<Reader> findReaderByFirstNameAndLastName(@Nonnull String firstName, @Nonnull String lastName);
 }

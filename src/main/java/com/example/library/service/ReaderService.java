@@ -1,12 +1,12 @@
 package com.example.library.service;
 
 
-import com.example.library.service.model.Issued;
 import com.example.library.service.model.Reader;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Nonnull;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -17,9 +17,9 @@ public interface ReaderService {
 
     Reader create(@NotNull Reader reader);
 
-    Reader update(@NotNull Reader reader);
+    Reader update(@NotNull Long readerId, @NotNull Reader reader);
 
-    Reader findReaderByFirstNameAndLastName(@Nonnull String firstName, @Nonnull String lastName);
+    Collection<Reader> findReaderByFirstNameAndLastName(@Nonnull String firstName, @Nonnull String lastName);
 
-    void delete(@NotNull Reader reader);
+    void delete(@NotNull Long id);
 }

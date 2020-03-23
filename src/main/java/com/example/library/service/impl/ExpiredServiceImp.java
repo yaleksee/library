@@ -34,8 +34,8 @@ public class ExpiredServiceImp implements ExpiredService {
     }
 
     @Override
-    public void delete(@NotNull ReaderExpired readerExpired) {
-        expiredRepository.delete(readerExpired);
+    public void delete(@NotNull Long id) {
+        expiredRepository.deleteById(id);
     }
 
     @NotNull

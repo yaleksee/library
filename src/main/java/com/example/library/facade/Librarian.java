@@ -24,22 +24,21 @@ import java.util.Collection;
 @Service
 @RequiredArgsConstructor
 public class Librarian {
-    private final Environment environment;
-
-    @Value("${standard}")
-    private final Integer standard;
-    @Value("${newBook}")
-    private final Integer newBook;
-    @Value("${limitCount}")
-    private final Integer limitCount;
-    @Value("${minimum}")
-    private final Integer minimum;
-
     private final ReaderService readerService;
     private final HistoryService historyService;
     private final BookService bookService;
     private final IssuedService issuedService;
     private final ExpiredService expiredService;
+
+
+    @Value(value = "${standard}")
+    private int standard;
+    @Value(value = "${newBook}")
+    private int newBook;
+    @Value(value = "${limitCount}")
+    private int limitCount;
+    @Value(value = "${minimum}")
+    private int minimum;
 
     @Transactional
     public Issued giveOutBook(@NotNull Long bookId, @NotNull Long readerId) {
@@ -99,9 +98,9 @@ public class Librarian {
             readerExpired.setExpired((int) (diff / (24 * 60 * 60 * 1000)));
             expiredService.create(readerExpired);
         }
-        issuedService.delete(issued);
+        issuedService.delete(issued.getId());
         history.setTimeReturn(date);
-        historyService.update(history);
+        historyService.update(history.getId(), history);
         return history;
     }
 

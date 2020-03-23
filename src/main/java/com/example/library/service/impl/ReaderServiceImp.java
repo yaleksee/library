@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Nonnull;
 import javax.validation.constraints.NotNull;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -37,18 +38,21 @@ public class ReaderServiceImp implements ReaderService {
     }
 
     @NotNull
-    public Reader update(@NotNull Reader reader) {
-        return readerRepository.save(reader);
+    public Reader update(@NotNull Long readerId, @NotNull Reader reader) {
+        final Reader currentReader = readerRepository.getOne(readerId);
+        currentReader.setFirstName(reader.getFirstName());
+        currentReader.setLastName(reader.getLastName());
+        return readerRepository.save(currentReader);
     }
 
     @Override
     @NotNull
-    public Reader findReaderByFirstNameAndLastName(@Nonnull String firstName, @Nonnull String lastName) {
+    public Collection<Reader> findReaderByFirstNameAndLastName(@Nonnull String firstName, @Nonnull String lastName) {
         return readerRepository.findReaderByFirstNameAndLastName(firstName, lastName);
     }
 
     @Override
-    public void delete(@NotNull Reader reader) {
-        readerRepository.delete(reader);
+    public void delete(@NotNull Long id) {
+        readerRepository.deleteById(id);
     }
 }

@@ -18,5 +18,5 @@ public interface IssuedService
 
     Issued create(@NotNull Issued issued);
 
-    void delete(@NotNull Issued issued);
+    void delete(@NotNull Long id);
 }

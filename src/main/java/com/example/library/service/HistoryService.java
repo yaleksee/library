@@ -19,9 +19,9 @@ public interface HistoryService
 
     History create(@NotNull History history);
 
-    History update(@NotNull History history);
+    History update(@NotNull Long historyId, @NotNull History history);
 
-    void delete(@NotNull History history);
+    void delete(@NotNull Long id);
 
-    History findByIssued(@NotNull Issued issued);
+    History findByIssuedId(@NotNull Long id);
 }

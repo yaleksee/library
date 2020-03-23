@@ -8,5 +8,5 @@ import javax.validation.constraints.NotNull;
 import java.awt.print.Book;
 
 public interface HistoryRepository extends JpaRepository<History, Long> {
-    History findByIssued(@NotNull Issued issued);
+    History findByIssued_Id(@NotNull Long issuedId);
 }

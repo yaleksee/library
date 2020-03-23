@@ -18,5 +18,5 @@ public interface ExpiredService
 
     ReaderExpired create(@NotNull ReaderExpired readerExpired);
 
-    void delete(@NotNull ReaderExpired readerExpired);
+    void delete(@NotNull Long id);
 }
