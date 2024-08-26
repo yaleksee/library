@@ -17,7 +17,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <springfox.swagger.version>2.6.1</springfox.swagger.version>
+        <springfox.swagger.version>2.10.0</springfox.swagger.version>
         <spring-cloud.version>Hoxton.SR1</spring-cloud.version>
         <java.version>11</java.version>
         <downloadSources>true</downloadSources>
